@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namaaji Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-300 h-screen flex items-center justify-center">
+    
+    <div class="bg-black p-2 rounded-3xl shadow-2xl max-w-sm w-80 overflow-hidden">
+    <div id="time" class="text-white text-lg font-bold flex justify-between items-center mb-4 p-3">
+        <div id="time-value">--:--</div>
+        <div>
+            <i class="fa-solid fa-signal"></i>
+            <i class="fa-solid fa-wifi"></i>
+            <i class="fa-solid fa-battery"></i>
+        </div>
+    </div>
+        <form class="p-5">
+            <div class="bg-black rounded-lg mb-4 flex items-center justify-end p-3 text-white">
+                <input class="bg-black text-white text-right flex-1 text-4xl shadow-none" type="text" name="display" readonly>
+            </div>
+            <div class="flex justify-center">
+                <input class="w-14 h-14  rounded-full shadow-md font-bold text-black cursor-pointer m-1 bg-gray-300 hover:bg-gray-400" type="button" value="AC" onclick="display.value = ''">
+                <input class="w-14 h-14  rounded-full shadow-md font-bold text-black cursor-pointer m-1 bg-gray-300 hover:bg-gray-400" type="button" value="DE" onclick="display.value = display.value.slice(0, -1)">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-black cursor-pointer m-1 bg-gray-300 hover:bg-gray-400" type="button" value="." onclick="display.value += '.'">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-white cursor-pointer m-1 bg-yellow-500 hover:bg-yellow-600" type="button" value="÷" onclick="display.value += '/'">
+                </div>
+                <div class="flex justify-center">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-white cursor-pointer m-1 bg-gray-900 opacity-400 hover:bg-gray-600" type="button" value="7" onclick="display.value += '7'">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-white cursor-pointer m-1 bg-gray-900 opacity-400 hover:bg-gray-600" type="button" value="8" onclick="display.value += '8'">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-white cursor-pointer m-1 bg-gray-900 opacity-400 hover:bg-gray-600" type="button" value="9" onclick="display.value += '9'">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-white cursor-pointer m-1 bg-yellow-500 hover:bg-yellow-600" type="button" value="×" onclick="display.value += '*'">
+                </div>
+                <div class="flex justify-center">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-white cursor-pointer m-1 bg-gray-900 opacity-400 hover:bg-gray-600" type="button" value="4" onclick="display.value += '4'">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-white cursor-pointer m-1 bg-gray-900 opacity-400 hover:bg-gray-600" type="button" value="5" onclick="display.value += '5'">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-white cursor-pointer m-1 bg-gray-900 opacity-400 hover:bg-gray-600" type="button" value="6" onclick="display.value += '6'">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-white cursor-pointer m-1 bg-yellow-500 hover:bg-yellow-600" type="button" value="-" onclick="display.value += '-'">
+                </div>
+                <div class="flex justify-center">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-white cursor-pointer m-1 bg-gray-900 opacity-400 hover:bg-gray-600" type="button" value="1" onclick="display.value += '1'">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-white cursor-pointer m-1 bg-gray-900 opacity-400 hover:bg-gray-600" type="button" value="2" onclick="display.value += '2'">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-white cursor-pointer m-1 bg-gray-900 opacity-400 hover:bg-gray-600" type="button" value="3" onclick="display.value += '3'">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-white cursor-pointer m-1 bg-yellow-500 hover:bg-yellow-600" type="button" value="+" onclick="display.value += '+'">
+                </div>
+                <div class="flex justify-center">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-white cursor-pointer m-1 bg-gray-900 opacity-400 hover:bg-gray-600" type="button" value="0" onclick="display.value += '0'">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-white cursor-pointer m-1 bg-gray-900 opacity-400 hover:bg-gray-600" type="button" value="00" onclick="display.value += '00'">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-white cursor-pointer m-1 bg-transparent " type="button">
+                    <input class="w-14 h-14  rounded-full shadow-md font-bold text-white cursor-pointer m-1 bg-yellow-500 hover:bg-yellow-600" type="button" value="=" onclick="display.value = eval(display.value)">
+                </div>
+            </form>
+            <div class="bg-white h-1 rounded-2xl ml-20 mr-20">
+
+            </div>
+        </div>
+<script>
+    function updateTime() {
+  const now = new Date();
+
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+
+  hours = hours % 12 || 12;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+
+  const timeString = `${hours}:${minutes}`;
+
+  document.getElementById("time-value").innerText = timeString;
+}
+
+setInterval(updateTime, 1000);
+updateTime();
+</script>
+</body>
+</html>
