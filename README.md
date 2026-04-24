@@ -1,3 +1,4 @@
+<img width="818" height="442" alt="Screenshot 2026-04-23 232736" src="https://github.com/user-attachments/assets/579a9e3e-ff07-4517-91ea-479ad24971e5" />
 # Calculator Project
 
 A clean and functional calculator inspired by the iPhone calculator UI.
